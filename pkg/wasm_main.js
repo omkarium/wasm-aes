@@ -1,4 +1,4 @@
-import init, { run } from "./wasm_rufendec.js";
+import init, { run } from "./wasm_aes.js";
 init();
 
 document.querySelector('#clickme').addEventListener("click", () => {
