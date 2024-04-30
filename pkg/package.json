@@ -1,0 +1,14 @@
+{
+  "name": "wasm-rufendec",
+  "version": "0.1.0",
+  "files": [
+    "wasm_rufendec_bg.wasm",
+    "wasm_rufendec.js",
+    "wasm_rufendec.d.ts"
+  ],
+  "module": "wasm_rufendec.js",
+  "types": "wasm_rufendec.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
