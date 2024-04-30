@@ -1,14 +1,33 @@
 {
-  "name": "wasm-rufendec",
-  "version": "0.1.0",
-  "files": [
-    "wasm_rufendec_bg.wasm",
-    "wasm_rufendec.js",
-    "wasm_rufendec.d.ts"
+  "name": "wasm-aes",
+  "collaborators": [
+    "Venkatesh Omkaram"
   ],
-  "module": "wasm_rufendec.js",
-  "types": "wasm_rufendec.d.ts",
+  "description": "WASM-AES is a web based AES256 data encryption tool using WASM in the browser",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omkarium/wasm-aes"
+  },
+  "files": [
+    "wasm_aes_bg.wasm",
+    "wasm_aes.js",
+    "wasm_aes.d.ts"
+  ],
+  "module": "wasm_aes.js",
+  "homepage": "https://github.com/omkarium/wasm-aes",
+  "types": "wasm_aes.d.ts",
   "sideEffects": [
     "./snippets/*"
+  ],
+  "keywords": [
+    "aes",
+    "aes-256",
+    "aes-gcm",
+    "file-encryption-tool",
+    "encryption",
+    "encrypt",
+    "wasm"
   ]
 }
