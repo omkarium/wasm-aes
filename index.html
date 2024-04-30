@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=9">
+  <meta name="author" content="Venkatesh Omkaram">
+  <link rel="alternate" hreflang="x-default" href="https://linuxmule.com/">
+  <link rel="alternate" hreflang="en" href="https://linuxmule.com/">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="description" content="Encrypt and Decrypt Data using AES256 in WASM">
+  <link rel="canonical" href="https://linuxmule.com/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LinuxMule.com - AES256 Encryption Tool">
+  <meta property="og:description" content="Encrypt and Decrypt Data using AES256 in WASM">
+  <meta property="og:url" content="https://linuxmule.com/">
+  <meta property="og:site_name" content="LinuxMule">
+  <link rel="stylesheet" href="/pkg/styles/main.css">
+  <title>WASM AES256 Encryption</title>
+</head>
+<body>
+  <div class="wrapper">
+    <p class="title" ><u> AES Encryption in your browser</u></p>
+    <p class="title-2" >by Omkaram</p>
+    <img src="/pkg/images/security_2592258.png" alt="profile image" class="title-img" />
+    <textarea name="data" id="data" type="text" class="large-input" placeholder="Enter or paste your data here"></textarea>
+    
+    <div class="inputs">
+        <input name="password" id="password" type="password" class="small-input" placeholder="Password" />
+        <input name="salt" id="salt" type="password" class="small-input" placeholder="Salt" />
+        <select name="operation" id="operation" class="small-input">
+            <option value="Encrypt">Encrypt</option>
+            <option value="Decrypt">Decrypt</option>
+        </select>
+        <select name="mode" id="mode" class="small-input">
+            <option value="GCM">GCM</option>
+            <option value="ECB">ECB</option>
+        </select>
+        <input name="iterations" id="iterations" type="text" class="small-input" placeholder="Iterations" value="60000" />
+    </div>
+    
+    <div class="button-container">
+        <button type="button" id="clickme">Execute</button>
+    </div>
+    <textarea name="output" id="output" class="large-input" placeholder="Result"></textarea>
+    <br>
+    <br>
+    <hr>
+    <p class="heading-1">What is this Tool and How does it work?</p>
+    <p>This is a web based data encryption tool made available in WASM (WebAssembly). This helps you to do data encryption
+      using AES256 in two modes. The App runs directly in your browser and does not transmit your key or data to anywhere else.
+      If you are not convinced, then try loading the page just once and disconnect your machine to the internet. The app must be able to 
+      work regardless.
+    </p>
+    <br>
+    <footer class="footer">
+           <div style="text-align: center;">
+              <p>Copyright © 2024 All Rights Reserved - Omkaram Venkatesh.</p>
+           </div>
+      </footer>
+  </div>
+  
+
+  <script type="module" src="./pkg/wasm_main.js"></script>
+  <script src="./pkg/marker-copy-buttons.js"></script>
+</body>
+</html>

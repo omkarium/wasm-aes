@@ -1,0 +1,8 @@
+[self]
+name = "wasm-aes"
+version = "0.1.0"
+description = "WASM-AES is a web based AES256 data encryption tool using WASM in the browser"
+license = "Apache-2.0"
+notices = ["Copyright 2024 Venkatesh Omkaram"]
+authors = ["Venkatesh Omkaram"]
+repository = "https://github.com/omkarium/wasm-aes"
