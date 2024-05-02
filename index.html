@@ -27,34 +27,83 @@
     <p class="title" ><u> AES Encryption in your browser</u></p>
     <p class="title-2" >by Omkaram</p>
     <img src="./pkg/images/security_2592258.png" alt="profile image" class="title-img" />
-    <textarea name="data" id="data" type="text" class="large-input" placeholder="Enter or paste your data here"></textarea>
-    
-    <div class="inputs">
-        <input name="password" id="password" type="password" class="small-input" placeholder="Password" />
-        <input name="salt" id="salt" type="password" class="small-input" placeholder="Salt" />
-        <select name="operation" id="operation" class="small-input">
+    <div class="toggle-message">
+      <div class="toggle-outer">
+        <div class="toggle-inner">
+            <input type="checkbox" id="toggle">
+        </div>
+      </div>
+      <label id="toggleLabel" for="toggle">
+        File Read ON
+      </label>
+    </div>
+
+
+    <div id="result">
+      <textarea name="data" id="data" type="text" class="large-input" placeholder="Enter or paste your data here"></textarea>
+
+      <div class="inputs" >
+          <input name="password" id="password" type="password" class="small-input" placeholder="Password" />
+          <input name="salt" id="salt" type="password" class="small-input" placeholder="Salt" />
+          <select name="operation" id="operation" class="small-input">
+              <option value="Encrypt">Encrypt</option>
+              <option value="Decrypt">Decrypt</option>
+          </select>
+          <select name="mode" id="mode" class="small-input">
+              <option value="GCM">GCM</option>
+              <option value="ECB">ECB</option>
+          </select>
+          <input name="iterations" id="iterations" type="text" class="small-input" placeholder="Iterations" value="60000" />
+      </div>
+      
+      <div class="button-container">
+          <button type="button" id="clickme">Execute</button>
+      </div>
+      <textarea name="output" id="output" class="large-input" placeholder="Result"></textarea>
+    </div>
+
+    <div id="result2">
+      <input type="file" id="myFile" style="position: absolute; color: wheat;">
+      <textarea  id="data2" class="large-input" placeholder="See your input file content here"></textarea>
+      <div class="inputs">
+        <input name="password2" id="password2" type="password" class="small-input" placeholder="Password" />
+        <input name="salt2" id="salt2" type="password" class="small-input" placeholder="Salt" />
+        <select name="operation2" id="operation2" class="small-input" autocomplete="off">
             <option value="Encrypt">Encrypt</option>
             <option value="Decrypt">Decrypt</option>
         </select>
-        <select name="mode" id="mode" class="small-input">
+        <select name="mode2" id="mode2" class="small-input">
             <option value="GCM">GCM</option>
             <option value="ECB">ECB</option>
         </select>
-        <input name="iterations" id="iterations" type="text" class="small-input" placeholder="Iterations" value="60000" />
+        <input name="iterations2" id="iterations2" type="text" class="small-input" placeholder="Iterations" value="60000"/>
+      </div>
+      <div class="button-container">
+        <button type="button" id="execute" value="Execute">Execute</button>
+        <button type="button" id="download" value="Download">Download</button>
+
+      </div>
+      <p name="output2" id="output2" class="small-input" placeholder="Result"></p>
     </div>
     
-    <div class="button-container">
-        <button type="button" id="clickme">Execute</button>
-    </div>
-    <textarea name="output" id="output" class="large-input" placeholder="Result"></textarea>
     <br>
     <br>
-    <hr>
     <p class="heading-1">What is this Tool and How does it work?</p>
     <p>This is a web based data encryption tool made available in WASM (WebAssembly). This helps you to do data encryption
       using AES256 in two modes. The App runs directly in your browser and does not transmit your key or data to anywhere else.
-      If you are not convinced, then try loading the page just once and disconnect your machine to the internet. The app must be able to 
-      work regardless.
+      If you are not convinced, then try loading the page just once and disconnect your machine to the internet. The app must work regardless.
+
+      <u>If you are uploading a File and encrypting it using File Read ON toggle button, then the output encrypted file will be of the extension <b>".enom"</b></u>.
+
+      Make sure to close the browser after use.
+    </p>
+    <p class="heading-1">What is File Read ON and Data Read ON?</p>
+    <p>As the name implies, File Read ON will allow you to upload a file and work on it. Data Read ON will only work on Text data.</p>
+    <p>When you upload the file it can be of any file type. You can even upload Images, Binaries, Pdf etc. Whereas, in Data Read you cannot enter non utf-8 content.</p>
+    <p class="heading-1">Terms of use</p>
+    <p>This tool is a free service hosted on github pages. Feel free to fork the project and apply you changes in accordance with the Apache2.0 License since this project is dispatched under the said license.
+      The Author cannot be held responsible for any misuse, data loss, data breach etc. Here is the copy of the license 
+      <a href="/LICENSE-APACHE">LICENSE-APACHE</a> with which you must abide to use this service, or else do not use this tool.
     </p>
     <br>
     <footer class="footer">
@@ -67,5 +116,56 @@
 
   <script type="module" src="./pkg/wasm_main.js"></script>
   <script src="./pkg/marker-copy-buttons.js"></script>
+  <script>
+    $(document).ready(() => {
+        $('.toggle-outer').click(function(){
+            $(this).toggleClass('checked');
+            const res = $('#result');
+            const res2 = $('#result2');
+            if(res.css('display') === 'none'){
+                res.show(300);
+                res2.hide(300);
+                $('#toggle').attr('checked', true);
+                $('#toggleLabel').text('Data Read ON');
+            }
+            else{
+                res.hide(300);
+                res2.show(300);
+                $('#toggle').attr('checked', false);
+                $('#toggleLabel').text('File Read ON')
+            }
+             
+        })
+    });
+</script>
+<script>
+
+var input = document.getElementById("myFile");
+var input_text = document.getElementById("data2");
+var filename;
+var bytes;
+
+input.addEventListener("change", function () {
+  if (this.files && this.files[0]) {
+    var myFile = this.files[0];
+    filename = myFile.name;
+    var reader = new FileReader();
+    
+    reader.addEventListener('load', function (e) {
+      var str = new TextDecoder().decode(e.target.result);
+      console.log(str.length);
+      if (str.length > 1024) {
+        str = str.substr(0,1024) + '\n\n\n[[ The uploaded file size is greater than 1 KB. Truncated the rest of the data to print to the screen. This does not mean a portion of the file you uploaded will be encrypted or decrypted. Expect the complete file to be operated on ]]';
+    }
+      input_text.textContent = str;
+      var arrayBuffer = e.target.result;
+      bytes = new Uint8Array(arrayBuffer);
+    });
+    
+    reader.readAsArrayBuffer(myFile);
+  }   
+});
+
+</script>
 </body>
 </html>

@@ -111,7 +111,7 @@ select {
 
 .heading-1 {
     font-family: Arial, sans-serif;
-    color: white;
+    color: bisque;
     font-size: 20px;
     text-align: left;
     text-decoration: cadetblue;
@@ -143,6 +143,61 @@ p {
     font-weight: bold;
 }
 
+
+.toggle-message {
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-outer{
+    height: 20px;
+    width: 50px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #4caf50;
+    position: relative;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.toggle-outer.checked{
+    background-color: #bf5757;
+}
+
+.toggle-inner{
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease-in;
+}
+
+.toggle-outer.checked .toggle-inner{
+    left: 30px;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+#toggleLabel{
+    cursor: pointer;
+    color: antiquewhite;
+    padding-left: 10px;
+}
+
+#result{
+    display: none;
+}
+
+#result2{
+    display: block;
+}
+
+
 @media only screen and (max-width: 600px){
 
 .title-img {
@@ -153,4 +208,6 @@ p {
 }
 
 }
+
+
 

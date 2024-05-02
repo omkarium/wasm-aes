@@ -1,6 +1,6 @@
 [package]
 name = "wasm-aes"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "WASM-AES is a web based AES256 data encryption tool using WASM in the browser"
 authors = ["Venkatesh Omkaram"]

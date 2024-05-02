@@ -4,7 +4,7 @@
     "Venkatesh Omkaram"
   ],
   "description": "WASM-AES is a web based AES256 data encryption tool using WASM in the browser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
   "files": [
     "wasm_aes_bg.wasm",
     "wasm_aes.js",
-    "wasm_aes.d.ts"
+    "wasm_aes.d.ts",
+    "LICENSE-APACHE"
   ],
   "module": "wasm_aes.js",
   "homepage": "https://github.com/omkarium/wasm-aes",

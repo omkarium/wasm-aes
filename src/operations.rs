@@ -23,7 +23,7 @@ Read the Cargo.toml and Attributions to see which versions and the Authors who m
 
 pub fn encrypt_files(
     mode: &str,
-    data: String,
+    data: Vec<u8>,
     key_gen: GenericArray<u8, UInt<UInt<UInt<UInt<UInt<UInt<UTerm, B1>, B0>, B0>, B0>, B0>, B0>>,
 ) -> Option<Vec<u8>> {
     match mode {

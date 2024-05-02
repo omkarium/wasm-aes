@@ -10,12 +10,23 @@
 * @returns {string}
 */
 export function run(input: string, password: string, salt: string, operation: string, mode: string, iterations: number): string;
+/**
+* @param {Uint8Array} file_data
+* @param {string} password
+* @param {string} salt
+* @param {string} operation
+* @param {string} mode
+* @param {number} iterations
+* @returns {Uint8Array}
+*/
+export function run_files(file_data: Uint8Array, password: string, salt: string, operation: string, mode: string, iterations: number): Uint8Array;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly run: (a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number, i: number, j: number, k: number, l: number) => void;
+  readonly run_files: (a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number, i: number, j: number, k: number, l: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_export_0: (a: number, b: number) => number;
   readonly __wbindgen_export_1: (a: number, b: number, c: number, d: number) => number;
