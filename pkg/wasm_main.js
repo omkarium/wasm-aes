@@ -49,9 +49,13 @@ function downloadRawBytes(file, bytes) {
 
   // Create an invisible element
   var element = document.createElement('a');
+  
+  var url = URL.createObjectURL(blob);
+  
+  var dataUrl = 'data:attachment/octet-stream,' + url;
 
   // Set the href attribute to a URL representing the Blob
-  element.setAttribute('href', URL.createObjectURL(blob));
+  element.setAttribute('href', data);
 
   // Set the download attribute to the desired filename
   element.setAttribute('download', file);
