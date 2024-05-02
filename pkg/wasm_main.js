@@ -37,7 +37,7 @@ document.querySelector('#download').addEventListener("click", () => {
   }
 
   if (operation == "Decrypt") {
-    var file_name = filename.replace(/.enom/, "")
+    var file_name = filename.replace(/.enom[\.a-zA-Z]+/, "")
   }
   downloadRawBytes(file_name, bytes_to_blob);
 });
