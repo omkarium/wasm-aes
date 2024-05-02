@@ -45,17 +45,13 @@ document.querySelector('#download').addEventListener("click", () => {
 
 function downloadRawBytes(file, bytes) {
   // Create a Blob from the raw bytes
-  var blob = new Blob([bytes]);
+  var blob = new Blob([bytes], { type: 'application/octet-stream' });
 
   // Create an invisible element
   var element = document.createElement('a');
-  
-  var url = URL.createObjectURL(blob);
-  
-  var dataUrl = 'data:attachment/octet-stream,' + encodeURIComponent(bytes);
 
   // Set the href attribute to a URL representing the Blob
-  element.setAttribute('href', dataUrl);
+  element.setAttribute('href', URL.createObjectURL(blob));
 
   // Set the download attribute to the desired filename
   element.setAttribute('download', file);
