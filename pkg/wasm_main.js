@@ -14,6 +14,7 @@ document.querySelector('#clickme').addEventListener("click", () => {
 
 let raw_output_bytes;
 document.querySelector('#execute').addEventListener("click", () => {
+  let operation = document.getElementById('operation2').value;
   raw_output_bytes = run_files(bytes, 
     document.getElementById('password2').value, 
     document.getElementById('salt2').value, 
@@ -21,10 +22,10 @@ document.querySelector('#execute').addEventListener("click", () => {
     document.getElementById('mode2').value, 
     document.getElementById('iterations2').value);
     var datetime = new Date().toLocaleString();
-    if (raw_output_bytes[0] == 0) {
-      document.getElementById('output2').textContent = datetime + " :::  Failed the operation";
+    if (raw_output_bytes[0] == 0 && raw_output_bytes.length == 1) {
+      document.getElementById('output2').textContent = datetime + " :::  Failed the " + operation + " operation";
     } else {
-      document.getElementById('output2').textContent = datetime + " :::  Operation success. Please download the file now";
+      document.getElementById('output2').textContent = datetime + " :::  " + operation + " Operation success. Please download the file now";
     }  
 
 });
